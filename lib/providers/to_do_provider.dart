@@ -16,9 +16,9 @@ class ToDoProvider extends ChangeNotifier {
     return user!.userTasks;
   }
 
-  handleAddingTask(String taskTitle) {
+  handleAddingTask(String taskTitle) async {
     addedTasks = TaskModel(title: taskTitle, status: false);
-
+    await userService.postTask(addedTasks);
     notifyListeners();
   }
 }

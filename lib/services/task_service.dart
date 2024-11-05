@@ -18,4 +18,9 @@ class TaskService {
     final user = UserModel(tasksCount: count, userId: userId, userTasks: tasks);
     return user;
   }
+
+  postTask(TaskModel? addedTasks) async {
+    if (addedTasks == null) return;
+    await api.post(ApiEndpoints.getTasks, data: addedTasks);
+  }
 }

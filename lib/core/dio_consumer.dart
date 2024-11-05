@@ -31,4 +31,18 @@ class DioConsumer extends ApiConsumer {
       rethrow;
     }
   }
+
+  @override
+  Future post(String path, {data, Map<String, dynamic>? queryParameter}) async {
+    try {
+      final response = await dio.post(
+        path,
+        data: data,
+        queryParameters: queryParameter,
+      );
+      return response.data;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
